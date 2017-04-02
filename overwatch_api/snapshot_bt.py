@@ -11,6 +11,7 @@ pgPort = os.environ['PGPORT']
 pgDbName = os.environ['PGDBNAME']
 
 def snapshot_comp(battleTag):
+  '''Get snapshot of battleTag stats and store in store'''
   conn = psycopg2.connect(dbname=pgDbName, user=pgUser, password=pgPass, host=pgHost, port=pgPort)
   cur = conn.cursor()
   stats = getStats(battleTag)
