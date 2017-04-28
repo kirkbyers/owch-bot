@@ -13,7 +13,7 @@ def printStats(statsDicty):
       resultArray.append(result)
       result = ''
     for stat in statsDicty[key]:
-      temp = stat + ': ' + statsDicty[key][stat] + '\n'
+      temp = stat + ': ' + str(statsDicty[key][stat]) + '\n'
       if canAddString(result, temp):
         result += temp
       else:

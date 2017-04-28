@@ -18,7 +18,7 @@ async def on_message(message):
       messageContentArray = message.content.split(' ')
       oldStats = get_last_snapshots(messageContentArray[1])[0][0]
       stats = snapshot_comp(messageContentArray[1])
-      diff = diff_snapshots(oldStats, stats)
+      diff = diff_snapshots(stats, oldStats)
       for formatedMessage in printStats(diff):
         await discordClient.send_message(message.author, formatedMessage)
     elif message.content.startswith('!latest'):

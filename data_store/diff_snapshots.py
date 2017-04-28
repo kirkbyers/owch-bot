@@ -1,17 +1,22 @@
-def diff_snapshots (snap1, snap2):
+def diff_snapshots (snapNew, snapOld):
   resultSnap = {}
-  for hero in snap1:
-    if snap1[hero]['Games Played'] != snap2[hero]['Games Played']:
+  for hero in snapNew:
+    if snapNew[hero]['Games Played'] != snapOld[hero]['Games Played']:
       resultSnap[hero] = {}
-      for stat in snap1[hero]:
+      for stat in snapNew[hero]:
         try:
-          if snap1[hero][stat] != snap2[hero][stat]:
+          if snapNew[hero][stat] != snapOld[hero][stat]:
             try:
-              stat1Int = snap1[hero][stat]
-              stat2Int = snap2[hero][stat]
-              resultSnap[hero][stat] = stat1Int - stat2Int
+              try:
+                stat1Int = int(snapNew[hero][stat])
+                stat2Int = int(snapOld[hero][stat])
+                resultSnap[hero][stat] = stat1Int - stat2Int
+              except:
+                stat1Int = float(snapNew[hero][stat])
+                stat2Int = float(snapOld[hero][stat])
+                resultSnap[hero][stat] = stat1Int - stat2Int
             except:
-              resultSnap[hero][stat] = 'Old: ' + snap1[hero][stat] + ', New: ' + snap2[hero][stat]
+              resultSnap[hero][stat] = 'New: ' + snapNew[hero][stat] + ', Old: ' + snapOld[hero][stat]
         except:
           pass
   return resultSnap
