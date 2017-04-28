@@ -7,3 +7,5 @@ pip-selfcheck.json
 notebooks
 test.py
 .vscode
+__pycache__
+__pycache__/*

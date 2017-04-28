@@ -1,6 +1,8 @@
 messageLimit = 2000
 
 def printStats(statsDicty):
+  if len(statsDicty) == 0:
+    return ['No change since last snapshot']
   result = ''
   resultArray = []
   for key in statsDicty:
